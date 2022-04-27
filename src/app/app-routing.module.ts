@@ -5,10 +5,10 @@ import { BlogPostComponent } from './components/blog-post/blog-post.component';
 import { BlogPostsComponent } from './components/blog-posts/blog-posts.component';
 
 const routes: Routes = [
-  { path: "**", redirectTo: "/blog", pathMatch: "full" },
   { path: "blog", component: BlogPostsComponent },
   { path: "blog/post/:id", component: BlogPostComponent },
-  { path: "add-blog-post", component: AddBlogPostComponent }
+  { path: "add-blog-post", component: AddBlogPostComponent },
+  { path: "**", redirectTo: "/blog", pathMatch: "full" }
 ];
 
 @NgModule({

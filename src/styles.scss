@@ -19,6 +19,7 @@
 }
 
 body {
+  overflow-y: scroll;
   font-family: "PixelOperator", Tahoma;
   color: white;
   font-size: var(--small-text);

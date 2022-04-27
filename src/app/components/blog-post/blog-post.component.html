@@ -1,1 +1,18 @@
-<p>blog-post works!</p>
+<div *ngIf="blogPost" class="blog-post-container">
+  <h1 class="blog-post-h1">{{ blogPost.title }}</h1>
+  <div class="blog-post-h1-separator"></div>
+  <div class="blog-post">
+    <h2 class="blog-post-h2">
+      {{ blogPost.author }}
+    </h2>
+    <div [innerHTML]="blogPost.content" class="blog-post-content"></div>
+    <p class="blog-post-publish-date">
+      {{ blogPost.publish_date }}
+    </p>
+  </div>
+  <div *ngIf="comments" class="blog-post-comment-separator"></div>
+  <div *ngFor="let comment of comments; let last = last">
+    <app-comment-card [comment]="comment"></app-comment-card>
+    <div class="comment-separator"></div>
+  </div>
+</div>

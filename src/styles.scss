@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "PixelOperator";
+  src: url("./assets/PixelOperatorMono8.ttf") format("truetype");
+}
+
+:root {
+  --primary-color: #232323;
+  --secondary-color: #2C2C2C;
+  --accent-color: #983C3C;
+  --secondary-accent-color: #f0e161;
+  --warning-color: #df0000;
+
+  --mini-text: clamp(10px, 1.3 * (1vw + 1vh) / 2, 12px);
+  --small-text: clamp(10px, 1.4 * (1vw + 1vh) / 2, 14px);
+  --medium-text: clamp(10px, 1.55 * (1vw + 1vh) / 2, 16px);
+  --large-text: clamp(12px, 1.9 * (1vw + 1vh) / 2, 26px);
+
+  --medium-icon: clamp(28px, 5 * (1vw + 1vh) / 2, 92px);
+}
+
+body {
+  font-family: "PixelOperator", Tahoma;
+  color: white;
+  font-size: var(--small-text);
+}

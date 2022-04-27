@@ -1,1 +1,15 @@
-<p>blog-post-card works!</p>
+<div *ngIf="blogPost" class="blog-post-card-container">
+    <h2 class="blog-post-card-h2">{{ blogPost.title }}</h2>
+    <div class="blog-post-card-h2-separator"></div>
+    <div class="blog-post-card">
+      <h3 class="blog-post-card-h3">
+        {{ blogPost.author }}
+      </h3>
+      <div class="blog-post-card-description">
+        {{ blogPost.description }}
+      </div>
+      <p class="blog-post-card-publish-date">
+        {{ blogPost.publish_date }}
+      </p>
+    </div>
+</div>

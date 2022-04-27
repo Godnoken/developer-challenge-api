@@ -1,1 +1,9 @@
-<p>blog-posts works!</p>
+<div class="header-container">
+  <h1 class="header-text">Retro Blog</h1>
+</div>
+<div class="blog-posts-container">
+    <article *ngFor="let blogPost of blogPosts; let last = last">
+        <app-blog-post-card [blogPost]="blogPost"></app-blog-post-card>
+        <div *ngIf="!last" class="blog-posts-separator"></div>
+    </article>
+</div>

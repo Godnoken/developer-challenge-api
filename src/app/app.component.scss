@@ -1,0 +1,47 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: var(--secondary-color);
+}
+
+.main {
+    position: relative;
+    width: 75%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 10%;
+    background-color: var(--primary-color);
+}
+
+.dark-light-icon {
+    position: fixed;
+    top: 12px;
+    right: 13.5%;
+    width: var(--medium-icon);
+    stroke: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.dark-light-icon:hover {
+    stroke: var(--secondary-accent-color);
+}
+
+.footer {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--mini-text);
+}
+
+@media only screen and (max-width: 820px) {
+    .main {
+        width: 100%;
+        padding: 0;
+    }
+
+    .dark-light-icon {
+        right: 12px;
+    }
+}

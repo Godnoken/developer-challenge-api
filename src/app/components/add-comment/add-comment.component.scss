@@ -1,0 +1,72 @@
+:host {
+    width: 90%;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border: dashed 3px var(--secondary-accent-color);
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5%;
+}
+
+.comment-user-label {
+    align-self: flex-start;
+    text-align: start;
+}
+
+.comment-user-label:first-child {
+    display: block;
+}
+
+.comment-user {
+    width: 40%;
+    border: dashed 1px white;
+    padding: 4px;
+    background-color: transparent;
+    outline: none;
+    color: white;
+    caret-color: var(--secondary-accent-color);
+}
+
+.comment-content-label {
+    margin-bottom: 24px;
+}
+
+.comment-content {
+    width: 100%;
+    min-height: 64px;
+    display: block;
+    margin: 12px 0;
+    padding: 8px;
+    background-color: var(--secondary-color);
+    outline: none;
+    color: white;
+    overflow: hidden;
+    resize: vertical;
+    caret-color: var(--secondary-accent-color);
+}
+
+label {
+    text-align: center;
+}
+
+.comment-button-send {
+    align-self: center;
+}
+
+.user-error {
+    transform: translateY(5px);
+}
+
+@media only screen and (max-width: 1280px) {
+    .comment-user-label {
+        margin-bottom: 24px;
+        justify-content: center;
+        align-self: center;
+        text-align: center;
+    }
+}

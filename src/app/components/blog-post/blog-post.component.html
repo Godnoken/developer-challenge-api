@@ -10,9 +10,12 @@
       {{ blogPost.publish_date }}
     </p>
   </div>
-  <div *ngIf="comments" class="blog-post-comment-separator"></div>
-  <div *ngFor="let comment of comments; let last = last">
+  <div *ngIf="comments.length > 0" class="blog-post-comment-separator"></div>
+  <div *ngFor="let comment of paginatedComments; let last = last">
     <app-comment-card [comment]="comment"></app-comment-card>
     <div *ngIf="!last" class="comment-separator"></div>
   </div>
+  <app-blog-post-comment-navigation (currentPageChange)="displayCurrentPageComments(this.comments, this.rows, $event)" [blogPostId]="blogPostId" [pageCount]="pageCount" [(currentPage)]="currentPage" [pageButtons]="pageButtons" [(isCreatingComment)]="isCreatingComment"></app-blog-post-comment-navigation>
+  <div *ngIf="isCreatingComment" class="comment-separator"></div>
+  <app-add-comment *ngIf="isCreatingComment" [comments]="comments" [blogPostId]="blogPostId" (emitAddedComment)="displayNewComment()"></app-add-comment>
 </div>

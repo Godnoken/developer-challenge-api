@@ -1,1 +1,17 @@
-<p>add-comment works!</p>
+<form class="comment-form" [formGroup]="commentForm" (ngSubmit)="addComment()">
+    <label class="comment-user-label">
+        Name:
+        <input type="text" formControlName="user" class="comment-user">
+        <p *ngIf="(user.errors?.['required']) && (user.touched || user.dirty)" class="error-message user-error">
+            Insert a name
+        </p>
+    </label>
+    <label class="comment-content-label">
+        Comment
+        <textarea formControlName="content" class="comment-content" (input)="autoGrowSize()"></textarea>
+        <p *ngIf="(content.errors?.['minlength'] || content.errors?.['required']) && (user.touched || user.dirty)" class="error-message">
+            Minimum 5 characters
+        </p>
+    </label>
+    <button class="comment-button-send" type="submit">Send</button>
+</form>

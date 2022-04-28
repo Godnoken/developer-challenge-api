@@ -1,0 +1,44 @@
+.navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 24px;
+    margin: 24px 0 0;
+    user-select: none;
+}
+
+.navigation-numbers-container {
+    display: flex;
+    column-gap: 8px;
+}
+
+.navigation-number {
+    cursor: pointer;
+}
+
+.navigation-buttons-container {
+    display: flex;
+    column-gap: 38px;
+}
+
+.go-back-forward-icon {
+    width: var(--small-icon);
+    stroke: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.go-forward {
+    transform: rotate(-180deg);
+}
+
+
+@media(hover: hover) and (pointer: fine) {
+    .go-back-forward-icon:hover {
+        stroke: var(--secondary-accent-color);
+    }
+
+    .go-forward:hover {
+        stroke: var(--secondary-accent-color);
+    }
+}

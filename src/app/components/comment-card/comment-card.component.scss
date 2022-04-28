@@ -16,9 +16,11 @@
 }
 
 .comment-card-middle {
+    width: 100%;
     margin: 16px 24px;
     padding: 20px;
     word-break: break-word;
+    white-space: pre-wrap;
     background-color: var(--secondary-color);
 }
 
@@ -35,6 +37,7 @@
 
     .comment-card-middle {
         margin: 10px 24px;
+        width: auto;
     }
 
     .comment-card-right {

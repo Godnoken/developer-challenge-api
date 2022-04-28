@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   subscribeToRouterNavigation(): void {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if (val.url === "/" || val.url === "/blog") this.isOnHomeScreen = true;
+        if (val.urlAfterRedirects === "/" || val.urlAfterRedirects === "/blog") this.isOnHomeScreen = true;
         else this.isOnHomeScreen = false;
       }
     });

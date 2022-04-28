@@ -15,12 +15,48 @@
   --medium-text: clamp(12px, 1.55 * (1vw + 1vh) / 2, 16px);
   --large-text: clamp(12px, 1.9 * (1vw + 1vh) / 2, 26px);
 
+  --small-icon: clamp(14px, 5 * (1vw + 1vh) / 2, 50px);
   --medium-icon: clamp(28px, 5 * (1vw + 1vh) / 2, 92px);
 }
 
 body {
   overflow-y: scroll;
-  font-family: "PixelOperator", Tahoma;
   color: white;
   font-size: var(--small-text);
+  font-family: "PixelOperator", Tahoma;
+}
+
+button {
+  width: 120px;
+  padding: 0.5vh 0.5vw;
+  background-color: transparent;
+  border: dashed 2px var(--accent-color);
+  color: white;
+  font-family: "PixelOperator", Tahoma;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(-2px);
+}
+
+input {
+  font-family: "PixelOperator", Tahoma;
+}
+
+.disabled {
+  stroke: var(--secondary-color) !important;
+  pointer-events: none;
+}
+
+.active {
+  color: var(--secondary-accent-color);
+}
+
+.error-message {
+  height: 0;
+  color: var(--warning-color);
+  font-size: var(--mini-text);
+  transform: translateY(-4px);
 }

@@ -2,14 +2,6 @@
     cursor: pointer;
 }
 
-.blog-post-card-container:hover .blog-post-card-h2 {
-    color: var(--secondary-accent-color);
-}
-
-.blog-post-card-container:hover .blog-post-card {
-    border-color: var(--secondary-accent-color);
-}
-
 .blog-post-card {
     width: 90%;
     margin: 0 auto;
@@ -62,4 +54,14 @@
 .blog-post-card-publish-date {
     align-self: flex-end;
     margin: 0 10px 10px 0;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .blog-post-card-container:hover .blog-post-card-h2 {
+        color: var(--secondary-accent-color);
+    }
+    
+    .blog-post-card-container:hover .blog-post-card {
+        border-color: var(--secondary-accent-color);
+    }
 }

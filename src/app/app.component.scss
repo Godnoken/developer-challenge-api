@@ -28,10 +28,6 @@
     pointer-events: none;
 }
 
-.go-back-arrow-icon:hover {
-    stroke: var(--secondary-accent-color);
-}
-
 .dark-light-icon {
     position: fixed;
     top: 12px;
@@ -40,10 +36,6 @@
     stroke: white;
     transition: 0.2s;
     cursor: pointer;
-}
-
-.dark-light-icon:hover {
-    stroke: var(--secondary-accent-color);
 }
 
 .footer {
@@ -66,5 +58,15 @@
 
     .go-back-arrow-icon {
         left: 12px;
+    }
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .go-back-arrow-icon:hover {
+        stroke: var(--secondary-accent-color);
+    }
+
+    .dark-light-icon:hover {
+        stroke: var(--secondary-accent-color);
     }
 }

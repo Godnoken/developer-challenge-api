@@ -13,6 +13,25 @@
     background-color: var(--primary-color);
 }
 
+.go-back-arrow-icon {
+    position: fixed;
+    top: 12px;
+    left: 13.5%;
+    width: var(--medium-icon);
+    stroke: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.go-back-arrow-icon-disabled {
+    stroke: var(--secondary-color);
+    pointer-events: none;
+}
+
+.go-back-arrow-icon:hover {
+    stroke: var(--secondary-accent-color);
+}
+
 .dark-light-icon {
     position: fixed;
     top: 12px;
@@ -43,5 +62,9 @@
 
     .dark-light-icon {
         right: 12px;
+    }
+
+    .go-back-arrow-icon {
+        left: 12px;
     }
 }

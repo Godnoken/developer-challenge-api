@@ -1,0 +1,43 @@
+:host {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    border: dashed 3px white;
+}
+
+.comment-card-left {
+    margin: 14px 0 0 14px;
+}
+
+.comment-card-user {
+    width: max-content;
+    padding-bottom: 6px;
+    border-bottom: 2px dashed var(--accent-color);
+}
+
+.comment-card-middle {
+    margin: 16px 24px;
+    padding: 20px;
+    word-break: break-word;
+    background-color: var(--secondary-color);
+}
+
+.comment-card-right {
+    margin: auto 6px 6px 0;
+    font-size: var(--mini-text);
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 1280px) {
+    :host {
+        flex-direction: column;
+    }
+
+    .comment-card-middle {
+        margin: 10px 24px;
+    }
+
+    .comment-card-right {
+        margin: 0 6px 6px auto;
+    }
+}

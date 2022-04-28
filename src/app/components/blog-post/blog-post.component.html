@@ -13,6 +13,6 @@
   <div *ngIf="comments" class="blog-post-comment-separator"></div>
   <div *ngFor="let comment of comments; let last = last">
     <app-comment-card [comment]="comment"></app-comment-card>
-    <div class="comment-separator"></div>
+    <div *ngIf="!last" class="comment-separator"></div>
   </div>
 </div>

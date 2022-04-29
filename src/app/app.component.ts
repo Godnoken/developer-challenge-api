@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   public isOnHomeScreen = true;
   
   constructor(
-    private router: Router
+    public router: Router
   ) { }
 
   ngOnInit(): void {

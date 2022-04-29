@@ -1,35 +1,53 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
+
 import { AppComponent } from './app.component';
 
+let component: AppComponent;
+let fixture: ComponentFixture<AppComponent>
+let nativeElement: HTMLElement;
+
+let eventsSub = new BehaviorSubject<any>(null);
+
+const routerStub = {
+  events: eventsSub
+}
+
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: Router, useValue: routerStub }
+      ]
     }).compileComponents();
-  });
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    nativeElement = fixture.nativeElement;
+    fixture.detectChanges();
+  }));
+
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'lgc-frontend-challenge'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('lgc-frontend-challenge');
-  });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('lgc-frontend-challenge app is running!');
-  });
+  it('isOnHomeScreen should be true when navigating to "/blog" and "/"', () => {
+    eventsSub.next(new NavigationEnd(1, '/blog', '/blog'));
+    expect(component.isOnHomeScreen).toBeTruthy();
+
+    eventsSub.next(new NavigationEnd(1, '/', '/'));
+    expect(component.isOnHomeScreen).toBeTruthy();
+
+    // Not sure how to include redirects here..
+    eventsSub.next(new NavigationEnd(1, '/g', '/g'));
+    expect(component.isOnHomeScreen).toBeFalsy();
+  })
 });

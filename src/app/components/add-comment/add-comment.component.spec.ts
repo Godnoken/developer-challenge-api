@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddCommentComponent } from './add-comment.component';
@@ -8,7 +9,8 @@ describe('AddCommentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddCommentComponent ]
+      declarations: [ AddCommentComponent ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
   });
@@ -22,4 +24,10 @@ describe('AddCommentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('#autoFocusName should focus #comment-user onInit', () => {
+    const commentUserInput = fixture.debugElement.nativeElement.querySelector('.comment-user');
+
+    expect(commentUserInput).toBe(document.activeElement);
+  })
 });

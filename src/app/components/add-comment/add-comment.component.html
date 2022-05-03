@@ -1,4 +1,5 @@
 <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="addComment()">
+    <app-quote-comment *ngIf="commentService.quotedComment" [quotedComment]="commentService.quotedComment"></app-quote-comment>
     <label class="comment-user-label">
         Name:
         <input type="text" formControlName="user" class="comment-user">

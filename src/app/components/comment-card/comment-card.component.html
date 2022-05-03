@@ -1,9 +1,21 @@
 <div class="comment-card-left">
-    <h3 class="comment-card-user">{{ comment.user }}</h3>
+  <h3 class="comment-card-user">{{ comment.user }}</h3>
+  <button class="quote-button-top" (click)="quoteComment()">Quote</button>
 </div>
 <div class="comment-card-middle">
-    <p>{{ comment.content }}</p>
+  <app-quote-comment
+    *ngIf="comment.parentId !== null"
+    [quotedComment]="quotedComment"
+  ></app-quote-comment>
+  <p>{{ comment.content }}</p>
 </div>
 <div class="comment-card-right">
-    <p>{{ comment.date }}</p>
+  <button
+    class="quote-button-right"
+    (click)="quoteComment()"
+    [ngClass]="{ disabled: commentService.quotedComment }"
+  >
+    Quote
+  </button>
+  <p class="comment-date">{{ comment.date }}</p>
 </div>

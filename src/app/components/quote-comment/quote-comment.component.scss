@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    row-gap: 22px;
+    margin: 0 36px 24px;
+    padding: 14px;
+    background-color: var(--secondary-color);
+    word-break: break-word;
+    font-size: var(--mini-text);
+    border: dashed 4px var(--font-color);
+}

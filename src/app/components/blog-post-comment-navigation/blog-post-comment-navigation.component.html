@@ -6,7 +6,7 @@
   </ul>
   <div class="navigation-buttons-container" (click)="navigateByButtons($event)">
     <svg [ngClass]="{'disabled': currentPage === 1}" class="go-back-forward-icon" aria-label="go back" viewBox="0 -0.5 20 20" shape-rendering="crispEdges"><path [ngStyle]="{'pointer-events': 'none'}" d="M7 2h2M6 3h3M4 4h5M4 5h4M2 6h6M2 7h14M1 8h18M1 9h18M1 10h18M2 11h14M2 12h6m-4 1h4m-4 1h5m-3 1h3m-2 1h2"/></svg>
-    <button (click)="handleCreateCommentDisplay()" textContent="{{isCreatingComment === true ? 'Cancel' : 'Comment'}}" [ngClass]="{'disabled-button': isCreatingComment === false}" type="button"></button>
+    <button (click)="handleCreateCommentDisplay()" textContent="{{this.commentService.isCreatingComment === true ? 'Cancel' : 'Comment'}}" [ngClass]="{'disabled-button': this.commentService.isCreatingComment === false}" type="button"></button>
     <svg [ngClass]="{'disabled': pageCount === 0 || currentPage === pageCount}" class="go-back-forward-icon go-forward" aria-label="go forward" viewBox="0 -0.5 20 20" shape-rendering="crispEdges"><path [ngStyle]="{'pointer-events': 'none'}" d="M7 2h2M6 3h3M4 4h5M4 5h4M2 6h6M2 7h14M1 8h18M1 9h18M1 10h18M2 11h14M2 12h6m-4 1h4m-4 1h5m-3 1h3m-2 1h2"/></svg>
   </div>
 </nav>

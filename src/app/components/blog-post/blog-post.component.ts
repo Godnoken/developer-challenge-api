@@ -22,13 +22,12 @@ export class BlogPostComponent implements OnInit {
   public rows: number = 5;
   public pageCount: number = 0;
   public pageButtons: number[] = [];
-  public isCreatingComment = false;
   public blogPostLoadError: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private blogPostService: BlogPostService,
-    private commentService: CommentService,
+    public commentService: CommentService,
     private router: Router
   ) { }
 
@@ -80,7 +79,7 @@ export class BlogPostComponent implements OnInit {
 
 
   displayNewComment(): void {
-    this.isCreatingComment = false
+    this.commentService.isCreatingComment = false
     const amountOfPagesNewCommentIncluded = Math.ceil((this.comments.length) / this.rows);
 
     if (amountOfPagesNewCommentIncluded > this.pageCount) {

@@ -64,6 +64,7 @@ input {
 
 .disabled {
   stroke: var(--secondary-color) !important;
+  border-color: var(--secondary-color);
   pointer-events: none;
 }
 

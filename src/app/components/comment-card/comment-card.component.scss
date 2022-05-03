@@ -25,14 +25,29 @@
 }
 
 .comment-card-right {
-    margin: auto 6px 6px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 14px 6px 6px 0;
     font-size: var(--mini-text);
     white-space: nowrap;
+}
+
+.quote-button-top {
+    display: none;
 }
 
 @media only screen and (max-width: 1280px) {
     :host {
         flex-direction: column;
+    }
+
+    .comment-card-left {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 32px;
+        margin: 14px 14px 0 14px;
     }
 
     .comment-card-middle {
@@ -42,5 +57,14 @@
 
     .comment-card-right {
         margin: 0 6px 6px auto;
+        flex-direction: row;
+    }
+
+    .quote-button-right {
+        display: none;
+    }
+
+    .quote-button-top {
+        display: block;
     }
 }

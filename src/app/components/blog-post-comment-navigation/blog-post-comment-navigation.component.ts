@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Comment } from 'src/app/interfaces/comment-interface';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-blog-post-comment-navigation',
@@ -14,14 +15,13 @@ export class BlogPostCommentNavigationComponent implements OnInit {
   @Input() currentPage!: number;
   @Input() pageCount!: number;
   @Input() pageButtons!: number[];
-  @Input() isCreatingComment!: boolean;
   
   @Output() currentPageChange = new EventEmitter<number>();
-  @Output() isCreatingCommentChange = new EventEmitter<boolean>();
   
 
   constructor(
-    private router: Router
+    private router: Router,
+    public commentService: CommentService
   ) { }
 
   ngOnInit(): void {
@@ -29,13 +29,11 @@ export class BlogPostCommentNavigationComponent implements OnInit {
 
 
   handleCreateCommentDisplay(): void {
-    if (this.isCreatingComment === false) {
-      this.isCreatingComment = true;
+    if (this.commentService.isCreatingComment === false) {
+      this.commentService.isCreatingComment = true;
     } else {
-      this.isCreatingComment = false;
+      this.commentService.isCreatingComment = false;
     }
-    
-    this.isCreatingCommentChange.emit(this.isCreatingComment);
   }
 
 

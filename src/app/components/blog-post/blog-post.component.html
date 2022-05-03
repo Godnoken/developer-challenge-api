@@ -32,11 +32,10 @@
       [pageCount]="pageCount"
       [(currentPage)]="currentPage"
       [pageButtons]="pageButtons"
-      [(isCreatingComment)]="isCreatingComment"
     ></app-blog-post-comment-navigation>
-    <div *ngIf="isCreatingComment" class="comment-separator"></div>
+    <div *ngIf="this.commentService.isCreatingComment" class="comment-separator"></div>
     <app-add-comment
-      *ngIf="isCreatingComment"
+      *ngIf="this.commentService.isCreatingComment"
       [comments]="comments"
       [blogPostId]="blogPostId"
       (emitAddedComment)="displayNewComment()"

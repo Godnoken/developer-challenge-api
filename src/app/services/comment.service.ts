@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, shareReplay, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Comment } from '../interfaces/comment-interface';
 
@@ -16,6 +16,8 @@ const httpOptions = {
 export class CommentService {
   private apiUrl = "http://localhost:9000";
   public getComments$!: Observable<Comment[]>;
+  public isCreatingComment: boolean = false;
+  public quotedComment!: Comment | null;
 
   constructor(
     private http: HttpClient

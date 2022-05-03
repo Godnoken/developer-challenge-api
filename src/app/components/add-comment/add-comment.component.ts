@@ -18,13 +18,18 @@ export class AddCommentComponent implements OnInit {
   private textarea!: HTMLInputElement;
 
   constructor(
-    private commentService: CommentService,
+    public commentService: CommentService,
     private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
     this.textarea = this.renderer.selectRootElement(".comment-content", true);
     this.autoFocusName();
+  }
+
+  ngOnDestroy(): void {
+    this.commentService.quotedComment = null;
+    this.commentService.isCreatingComment = false;
   }
 
   commentForm = new FormGroup({
@@ -49,7 +54,7 @@ export class AddCommentComponent implements OnInit {
 
       const comment: Comment = {
         postId: this.blogPostId,
-        parentId: null,
+        ...(this.commentService.quotedComment ? { parentId: this.commentService.quotedComment.id! } : { parentId: null }),
         user: this.user.value,
         date: this.getCurrentDate(),
         content: this.content.value,

@@ -1,1 +1,4 @@
-<p>quote-comment works!</p>
+<ng-container *ngIf="quotedComment">
+    <p>{{ quotedComment.user }}</p>
+    <p>{{ quotedComment.content }}</p>
+</ng-container>

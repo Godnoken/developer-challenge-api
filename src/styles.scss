@@ -60,3 +60,15 @@ input {
   font-size: var(--mini-text);
   transform: translateY(-4px);
 }
+
+.loading-error {
+  width: 100%;
+  height: 100%;
+  padding: 14px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--mini-text);
+  text-align: center;
+  line-height: 32px;
+}

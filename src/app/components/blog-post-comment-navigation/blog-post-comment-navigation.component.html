@@ -1,5 +1,5 @@
 <nav class="navigation">
-  <ul class="navigation-numbers-container" (click)="navigateByNumbers($event)">
+  <ul *ngIf="pageButtons.length > 0" class="navigation-numbers-container" (click)="navigateByNumbers($event)">
     <li *ngFor="let pageButton of pageButtons let index = index" [ngClass]="{'active': currentPage - 1 === index}" class="navigation-number">
         {{ pageButton }}
     </li>

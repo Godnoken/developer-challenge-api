@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { BlogPost } from '../interfaces/blog-post-interface';
-
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json"
@@ -19,12 +18,7 @@ export class BlogPostService {
     private http: HttpClient
   ) { }
 
+  // ShareReply caches data so user doesn't need to request data over and over again when browsing
+  getBlogPosts$ = this.http.get<BlogPost[]>(`${this.apiUrl}/posts`).pipe(shareReplay(1));
 
-  getBlogPosts(): Observable<BlogPost[]> {
-    return this.http.get<BlogPost[]>(`${this.apiUrl}/posts`);
-  }
-
-  getBlogPost(blogPostId: number): Observable<BlogPost> {
-    return this.http.get<BlogPost>(`${this.apiUrl}/posts/${blogPostId}`);
-  }
 }

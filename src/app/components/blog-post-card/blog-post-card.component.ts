@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { BlogPost } from 'src/app/interfaces/blog-post-interface';
 
 @Component({
@@ -13,5 +14,5 @@ export class BlogPostCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

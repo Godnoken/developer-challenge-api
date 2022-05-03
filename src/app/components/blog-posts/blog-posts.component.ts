@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, ignoreElements, Observable, of } from 'rxjs';
+
 import { BlogPost } from 'src/app/interfaces/blog-post-interface';
 import { BlogPostService } from 'src/app/services/blog-post.service';
 
@@ -8,7 +10,8 @@ import { BlogPostService } from 'src/app/services/blog-post.service';
   styleUrls: ['./blog-posts.component.scss']
 })
 export class BlogPostsComponent implements OnInit {
-  public blogPosts: BlogPost[] = [];
+  public blogPosts$!: Observable<BlogPost[]>;
+  public blogPostsError$!: Observable<BlogPost[]>;
 
   constructor(
     private blogPostService: BlogPostService
@@ -19,10 +22,11 @@ export class BlogPostsComponent implements OnInit {
   }
 
   getBlogPosts(): void {
-    this.blogPostService.getBlogPosts()
-      .subscribe((blogPosts) => {
-        blogPosts.reverse();
-        this.blogPosts = blogPosts;
-      })
+    this.blogPosts$ = this.blogPostService.getBlogPosts$;
+    this.blogPostsError$ = this.blogPosts$
+    .pipe(
+      ignoreElements(),
+      catchError((error) => of(error)),
+    )
   }
 }

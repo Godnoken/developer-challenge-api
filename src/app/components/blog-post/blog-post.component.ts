@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { finalize } from 'rxjs';
+import { catchError, ignoreElements, isEmpty, Observable, of, tap, throwError } from 'rxjs';
 
 import { BlogPost } from 'src/app/interfaces/blog-post-interface';
 import { Comment } from 'src/app/interfaces/comment-interface';
@@ -14,14 +14,16 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class BlogPostComponent implements OnInit {
   public blogPostId = Number(this.route.snapshot.paramMap.get("id"));
-  public blogPost!: BlogPost;
-  public comments: Comment[] = [];
+  public blogPost$!: Observable<BlogPost>;
+  public comments!: Comment[];
+  public comments$!: Observable<Comment[]>;
   public currentPage = Number(this.route.snapshot.paramMap.get("commentPage"));
   public paginatedComments!: Comment[];
-  public rows: number = 2;
+  public rows: number = 5;
   public pageCount: number = 0;
   public pageButtons: number[] = [];
   public isCreatingComment = false;
+  public blogPostLoadError: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,30 +34,48 @@ export class BlogPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogPost();
+    this.getComments();
   }
 
-
   getBlogPost(): void {
-    this.blogPostService.getBlogPost(this.blogPostId)
+    this.blogPostService.getBlogPosts$
       .pipe(
-        finalize(() => {
-          this.getComments();
+        catchError(() => {
+          this.blogPostLoadError = true
+          return of();
         })
       )
-      .subscribe(blogPost => this.blogPost = blogPost);
+      .subscribe((blogPosts) => {
+        blogPosts.find((blogPost) => {
+          if (blogPost.id === this.blogPostId) {
+            this.blogPost$ = of(blogPost);
+          }
+          
+          // If blogpost couldn't be found in cache, display error
+          else if (!this.blogPost$ && blogPost === blogPosts[blogPosts.length - 1]) {
+            this.blogPostLoadError = true;
+          }
+        })
+      })
   }
 
 
   getComments(): void {
-    this.commentService.getComments(this.blogPostId)
+   this.commentService.getComments(this.blogPostId);
+   this.comments$ = this.commentService.getComments$
       .pipe(
-        finalize(() => {
+        catchError(error => {
+          console.error(error);
+          return of();
+        }),
+        tap((comments) => {
+          this.comments = comments;
+
           this.displayCurrentPageComments(this.comments, this.rows, this.currentPage);
           this.pageCount = Math.ceil(this.comments.length / this.rows);
           this.setupPagination();
         })
       )
-      .subscribe(comments => comments.length > 0 ? this.comments = comments : null);
   }
 
 
@@ -87,7 +107,7 @@ export class BlogPostComponent implements OnInit {
     // Read from 0 (array)
     page--;
 
-    // Slice 5 items from comments array & display them through paginatedComments
+    // Slice (rowsPerPage) amount of items from comments array & display them through paginatedComments
     let start = rowsPerPage * page;
     let end = start + rowsPerPage;
     this.paginatedComments = items.slice(start, end);

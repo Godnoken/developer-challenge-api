@@ -1,21 +1,50 @@
-<div *ngIf="blogPost" class="blog-post-container">
-  <h1 class="blog-post-h1">{{ blogPost.title }}</h1>
-  <div class="blog-post-h1-separator"></div>
-  <div class="blog-post">
-    <h2 class="blog-post-h2">
-      {{ blogPost.author }}
-    </h2>
-    <div [innerHTML]="blogPost.content" class="blog-post-content"></div>
-    <p class="blog-post-publish-date">
-      {{ blogPost.publish_date }}
-    </p>
+<div
+  *ngIf="{ blogPost: blogPost$ | async, comments: comments$ | async } as data"
+  class="blog-post-container"
+>
+  <div *ngIf="data.blogPost && data.comments">
+    <h1 class="blog-post-h1">{{ data.blogPost.title }}</h1>
+    <div class="blog-post-h1-separator"></div>
+    <div class="blog-post">
+      <h2 class="blog-post-h2">
+        {{ data.blogPost.author }}
+      </h2>
+      <div [innerHTML]="data.blogPost.content" class="blog-post-content"></div>
+      <p class="blog-post-publish-date">
+        {{ data.blogPost.publish_date }}
+      </p>
+    </div>
+    <div class="blog-post-comment-separator"></div>
+    <div *ngIf="data.comments.length > 0; else noComments">
+      <div *ngFor="let comment of paginatedComments; let last = last">
+        <app-comment-card [comment]="comment"></app-comment-card>
+        <div *ngIf="!last" class="comment-separator"></div>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p class="loading-error">Be the first one to comment!</p>
+    </ng-template>
+    <app-blog-post-comment-navigation
+      (currentPageChange)="
+        displayCurrentPageComments(this.comments, this.rows, $event)
+      "
+      [blogPostId]="blogPostId"
+      [pageCount]="pageCount"
+      [(currentPage)]="currentPage"
+      [pageButtons]="pageButtons"
+      [(isCreatingComment)]="isCreatingComment"
+    ></app-blog-post-comment-navigation>
+    <div *ngIf="isCreatingComment" class="comment-separator"></div>
+    <app-add-comment
+      *ngIf="isCreatingComment"
+      [comments]="comments"
+      [blogPostId]="blogPostId"
+      (emitAddedComment)="displayNewComment()"
+    ></app-add-comment>
   </div>
-  <div *ngIf="comments.length > 0" class="blog-post-comment-separator"></div>
-  <div *ngFor="let comment of paginatedComments; let last = last">
-    <app-comment-card [comment]="comment"></app-comment-card>
-    <div *ngIf="!last" class="comment-separator"></div>
-  </div>
-  <app-blog-post-comment-navigation (currentPageChange)="displayCurrentPageComments(this.comments, this.rows, $event)" [blogPostId]="blogPostId" [pageCount]="pageCount" [(currentPage)]="currentPage" [pageButtons]="pageButtons" [(isCreatingComment)]="isCreatingComment"></app-blog-post-comment-navigation>
-  <div *ngIf="isCreatingComment" class="comment-separator"></div>
-  <app-add-comment *ngIf="isCreatingComment" [comments]="comments" [blogPostId]="blogPostId" (emitAddedComment)="displayNewComment()"></app-add-comment>
 </div>
+<h1 *ngIf="blogPostLoadError" class="loading-error">
+  Could not load in blog post...<br />
+  Either it's been removed, doesn't exist, or the servers are down.<br />
+  Try again in a bit.
+</h1>

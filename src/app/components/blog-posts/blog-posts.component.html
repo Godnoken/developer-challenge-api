@@ -1,9 +1,17 @@
 <div class="header-container">
   <h1 class="header-text">Retro Blog</h1>
 </div>
-<div class="blog-posts-container">
-    <article *ngFor="let blogPost of blogPosts; let last = last">
-        <app-blog-post-card [blogPost]="blogPost"></app-blog-post-card>
-        <div *ngIf="!last" class="blog-posts-separator"></div>
-    </article>
+<div *ngIf="blogPosts$ | async as blogPosts" class="blog-posts-container">
+  <article *ngFor="let blogPost of blogPosts.reverse(); let last = last">
+    <app-blog-post-card [blogPost]="blogPost"></app-blog-post-card>
+    <div *ngIf="!last" class="blog-posts-separator"></div>
+  </article>
+  <h2 *ngIf="blogPosts.length === 0" class="loading-error">
+    There are no blog posts...<br />
+    Why don't you go ahead and make the first one?
+  </h2>
 </div>
+<h2 *ngIf="blogPostsError$ | async" class="loading-error">
+  Could not load in any blog posts...<br />
+  Try again in a bit.
+</h2>

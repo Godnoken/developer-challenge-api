@@ -18,7 +18,7 @@
     top: 12px;
     left: 13.5%;
     width: var(--medium-icon);
-    stroke: white;
+    stroke: var(--font-color);
     transition: 0.2s;
     cursor: pointer;
 }
@@ -28,7 +28,7 @@
     top: 12px;
     right: 13.5%;
     width: var(--medium-icon);
-    stroke: white;
+    stroke: var(--font-color);
     transition: 0.2s;
     cursor: pointer;
 }
@@ -58,10 +58,10 @@
 
 @media(hover: hover) and (pointer: fine) {
     .go-back-arrow-icon:hover {
-        stroke: var(--secondary-accent-color);
+        stroke: var(--accent-color);
     }
 
     .dark-light-icon:hover {
-        stroke: var(--secondary-accent-color);
+        stroke: var(--accent-color);
     }
 }

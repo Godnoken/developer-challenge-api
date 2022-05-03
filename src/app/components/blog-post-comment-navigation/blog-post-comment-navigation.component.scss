@@ -23,7 +23,7 @@
 
 .go-back-forward-icon {
     width: var(--small-icon);
-    stroke: white;
+    stroke: var(--font-color);
     transition: 0.2s;
     cursor: pointer;
 }
@@ -35,10 +35,10 @@
 
 @media(hover: hover) and (pointer: fine) {
     .go-back-forward-icon:hover {
-        stroke: var(--secondary-accent-color);
+        stroke: var(--accent-color);
     }
 
     .go-forward:hover {
-        stroke: var(--secondary-accent-color);
+        stroke: var(--accent-color);
     }
 }

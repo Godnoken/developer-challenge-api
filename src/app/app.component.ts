@@ -15,7 +15,31 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeToRouterNavigation();
+    this.readColorThemeOnLoad();
   }
+
+  readColorThemeOnLoad(): void {
+    if (localStorage["theme"] === 'darkMode' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('darkMode')
+
+    } else {
+      document.documentElement.classList.remove('darkMode')
+    }
+  }
+
+  handleColorTheme(): void {
+    const html = document.documentElement;
+
+    if (html.classList.contains("darkMode")) {
+        html.classList.toggle("darkMode");
+        window.localStorage.setItem("theme", "lightMode");
+    }
+    else {
+        html.classList.toggle("darkMode");
+        window.localStorage.setItem("theme", "darkMode");
+    }
+  }
+  
 
   subscribeToRouterNavigation(): void {
     this.router.events.subscribe((val) => {

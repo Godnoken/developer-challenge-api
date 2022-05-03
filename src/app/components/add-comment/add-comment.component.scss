@@ -4,7 +4,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    border: dashed 3px var(--secondary-accent-color);
+    border: dashed 3px var(--accent-color);
 }
 
 .comment-form {
@@ -24,12 +24,12 @@
 
 .comment-user {
     width: 40%;
-    border: dashed 1px white;
+    border: dashed 1px var(--font-color);
     padding: 4px;
     background-color: transparent;
     outline: none;
-    color: white;
-    caret-color: var(--secondary-accent-color);
+    color: var(--font-color);
+    caret-color: var(--accent-color);
 }
 
 .comment-content-label {
@@ -44,10 +44,10 @@
     padding: 8px;
     background-color: var(--secondary-color);
     outline: none;
-    color: white;
+    color: var(--font-color);
     overflow: hidden;
     resize: vertical;
-    caret-color: var(--secondary-accent-color);
+    caret-color: var(--accent-color);
 }
 
 label {

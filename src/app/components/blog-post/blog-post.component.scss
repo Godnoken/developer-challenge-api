@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: dashed 5px white;
+  border: dashed 5px var(--font-color);
   transition: 0.2s;
 }
 
@@ -22,7 +22,7 @@
   width: 5px;
   height: 110px;
   margin: 18px auto;
-  border: 2.5px dashed white;
+  border: 2.5px dashed var(--font-color);
 }
 
 .blog-post-h2 {
@@ -70,5 +70,5 @@
   width: 5px;
   height: 40px;
   margin: 18px auto;
-  border: 2.5px dashed white;
+  border: 2.5px dashed var(--font-color);
 }

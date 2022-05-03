@@ -1,5 +1,6 @@
 .blog-post-card-container {
     cursor: pointer;
+    color: var(--font-color)
 }
 
 .blog-post-card {
@@ -8,7 +9,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: dashed 5px white;
+    border: dashed 5px var(--font-color);
     transition: 0.2s;
 }
 
@@ -22,7 +23,7 @@
     width: 5px;
     height: 24px;
     margin: 8px auto;
-    border: 2.5px dashed white;
+    border: 2.5px dashed var(--font-color);
 }
 
 .blog-post-card-h3 {
@@ -58,10 +59,10 @@
 
 @media(hover: hover) and (pointer: fine) {
     .blog-post-card-container:hover .blog-post-card-h2 {
-        color: var(--secondary-accent-color);
+        color: var(--accent-color);
     }
     
     .blog-post-card-container:hover .blog-post-card {
-        border-color: var(--secondary-accent-color);
+        border-color: var(--accent-color);
     }
 }

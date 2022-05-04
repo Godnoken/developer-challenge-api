@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, ignoreElements, Observable, of } from 'rxjs';
+import { catchError, ignoreElements, Observable, of, tap } from 'rxjs';
 
 import { BlogPost } from 'src/app/interfaces/blog-post-interface';
 import { BlogPostService } from 'src/app/services/blog-post.service';
@@ -22,7 +22,12 @@ export class BlogPostsComponent implements OnInit {
   }
 
   getBlogPosts(): void {
-    this.blogPosts$ = this.blogPostService.getBlogPosts$;
+    this.blogPosts$ = this.blogPostService.getBlogPosts$
+      .pipe(
+        tap((blogPosts) => {
+          blogPosts.sort((a, b) => { return b.id! - a.id!; })
+        })
+      )
     this.blogPostsError$ = this.blogPosts$
       .pipe(
         ignoreElements(),

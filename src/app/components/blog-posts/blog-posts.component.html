@@ -2,7 +2,7 @@
   <h1 class="header-text">Retro Blog</h1>
 </div>
 <div *ngIf="blogPosts$ | async as blogPosts" class="blog-posts-container">
-  <article *ngFor="let blogPost of blogPosts.reverse(); let last = last">
+  <article *ngFor="let blogPost of blogPosts; let last = last">
     <app-blog-post-card [blogPost]="blogPost"></app-blog-post-card>
     <div *ngIf="!last" class="blog-posts-separator"></div>
   </article>

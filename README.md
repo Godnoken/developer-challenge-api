@@ -1,7 +1,7 @@
 # LetsGetChecked developer challenge with Angular
 ![website](https://i.gyazo.com/1010f5d41a70d7906620a315fd6c449c.png)
 
-Live: https://mini-blog-letgetchecked.herokuapp.com/blog
+Live: https://mini-blog-letsgetchecked.herokuapp.com/blog
 
 ## Techs used
 HTML, SCSS, JavaScript, Angular.

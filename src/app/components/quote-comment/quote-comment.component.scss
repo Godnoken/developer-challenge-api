@@ -9,3 +9,9 @@
     font-size: var(--mini-text);
     border: dashed 4px var(--font-color);
 }
+
+.quoted-comment-user {
+    width: max-content;
+    padding-bottom: 2px;
+    border-bottom: dashed 1px var(--accent-color);
+}

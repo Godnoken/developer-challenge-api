@@ -24,7 +24,7 @@
     <ng-template #noComments>
       <p class="loading-error">Be the first one to comment!</p>
     </ng-template>
-    <app-blog-post-comment-navigation
+    <app-comments-navigation
       (currentPageChange)="
         displayCurrentPageComments(this.comments, this.rows, $event)
       "
@@ -32,7 +32,7 @@
       [pageCount]="pageCount"
       [(currentPage)]="currentPage"
       [pageButtons]="pageButtons"
-    ></app-blog-post-comment-navigation>
+    ></app-comments-navigation>
     <div *ngIf="this.commentService.isCreatingComment" class="comment-separator"></div>
     <app-add-comment
       *ngIf="this.commentService.isCreatingComment"

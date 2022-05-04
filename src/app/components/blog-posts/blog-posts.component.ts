@@ -24,9 +24,9 @@ export class BlogPostsComponent implements OnInit {
   getBlogPosts(): void {
     this.blogPosts$ = this.blogPostService.getBlogPosts$;
     this.blogPostsError$ = this.blogPosts$
-    .pipe(
-      ignoreElements(),
-      catchError((error) => of(error)),
-    )
+      .pipe(
+        ignoreElements(),
+        catchError((error) => of(error)),
+      )
   }
 }

@@ -10,9 +10,8 @@ import { CommentCardComponent } from './components/comment-card/comment-card.com
 import { BlogPostCardComponent } from './components/blog-post-card/blog-post-card.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { BlogPostComponent } from './components/blog-post/blog-post.component';
-import { AddBlogPostComponent } from './components/add-blog-post/add-blog-post.component';
 import { QuoteCommentComponent } from './components/quote-comment/quote-comment.component';
-import { BlogPostCommentNavigationComponent } from './components/blog-post-comment-navigation/blog-post-comment-navigation.component';
+import { CommentsNavigationComponent } from './components/comments-navigation/comments-navigation.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +21,8 @@ import { BlogPostCommentNavigationComponent } from './components/blog-post-comme
     BlogPostCardComponent,
     AddCommentComponent,
     BlogPostComponent,
-    AddBlogPostComponent,
     QuoteCommentComponent,
-    BlogPostCommentNavigationComponent
+    CommentsNavigationComponent
   ],
   imports: [
     BrowserModule,

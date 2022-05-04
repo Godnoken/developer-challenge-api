@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, ignoreElements, isEmpty, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 
 import { BlogPost } from 'src/app/interfaces/blog-post-interface';
 import { Comment } from 'src/app/interfaces/comment-interface';
@@ -49,7 +49,7 @@ export class BlogPostComponent implements OnInit {
           if (blogPost.id === this.blogPostId) {
             this.blogPost$ = of(blogPost);
           }
-          
+
           // If blogpost couldn't be found in cache, display error
           else if (!this.blogPost$ && blogPost === blogPosts[blogPosts.length - 1]) {
             this.blogPostLoadError = true;
@@ -60,8 +60,8 @@ export class BlogPostComponent implements OnInit {
 
 
   getComments(): void {
-   this.commentService.getComments(this.blogPostId);
-   this.comments$ = this.commentService.getComments$
+    this.commentService.getComments(this.blogPostId);
+    this.comments$ = this.commentService.getComments$
       .pipe(
         catchError(error => {
           console.error(error);

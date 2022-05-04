@@ -5,19 +5,19 @@ import { Comment } from 'src/app/interfaces/comment-interface';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
-  selector: 'app-blog-post-comment-navigation',
-  templateUrl: './blog-post-comment-navigation.component.html',
-  styleUrls: ['./blog-post-comment-navigation.component.scss']
+  selector: 'app-comments-navigation',
+  templateUrl: './comments-navigation.component.html',
+  styleUrls: ['./comments-navigation.component.scss']
 })
-export class BlogPostCommentNavigationComponent implements OnInit {
+export class CommentsNavigationComponent implements OnInit {
   @Input() blogPostId!: number;
   @Input() comments!: Comment[];
   @Input() currentPage!: number;
   @Input() pageCount!: number;
   @Input() pageButtons!: number[];
-  
+
   @Output() currentPageChange = new EventEmitter<number>();
-  
+
 
   constructor(
     private router: Router,
@@ -50,7 +50,7 @@ export class BlogPostCommentNavigationComponent implements OnInit {
       this.currentPage++;
       this.currentPageChange.emit(this.currentPage);
       this.navigateToUrl();
-    } 
+    }
     else if (event.target.ariaLabel === "go back") {
       this.currentPage--;
       this.currentPageChange.emit(this.currentPage);

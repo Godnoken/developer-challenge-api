@@ -14,5 +14,5 @@ export class BlogPostCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 }

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { AppComponent } from './app.component';
 

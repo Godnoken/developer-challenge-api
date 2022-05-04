@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, shareReplay } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { shareReplay } from 'rxjs';
+
 import { BlogPost } from '../interfaces/blog-post-interface';
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "application/json"
-  })
-}
+
 
 @Injectable({
   providedIn: 'root'

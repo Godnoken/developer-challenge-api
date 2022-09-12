@@ -14,7 +14,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CommentService {
-  private apiUrl = "http://localhost:9000";
+  private port = ( window.location.hostname === 'localhost' ) ? ':8080' : '';
+  public apiUrl = `${window.location.protocol}//${window.location.hostname}${this.port}/api`;
   public getComments$!: Observable<Comment[]>;
   public isCreatingComment: boolean = false;
   public quotedComment!: Comment | null;

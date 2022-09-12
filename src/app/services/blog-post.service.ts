@@ -9,7 +9,8 @@ import { BlogPost } from '../interfaces/blog-post-interface';
   providedIn: 'root'
 })
 export class BlogPostService {
-  private apiUrl = "http://localhost:9000";
+  private port = ( window.location.hostname === 'localhost' ) ? ':8080' : '';
+  public apiUrl = `${window.location.protocol}//${window.location.hostname}${this.port}/api`;
 
   constructor(
     private http: HttpClient
